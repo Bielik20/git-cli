@@ -1,7 +1,7 @@
 import * as inquirer from 'inquirer';
 
 export class Prompter {
-  askGithubCredentials() {
+  askGithubCredentials(): Promise<any> {
     const questions = [
       {
         name: 'username',
@@ -24,6 +24,24 @@ export class Prompter {
             return true;
           } else {
             return 'Please enter your password.';
+          }
+        },
+      },
+    ];
+    return inquirer.prompt(questions);
+  }
+
+  async askGithubTwoFactor(): Promise<any> {
+    const questions = [
+      {
+        name: 'token',
+        type: 'input',
+        message: 'Two-factor authentication Code:',
+        validate(value) {
+          if (value.length) {
+            return true;
+          } else {
+            return 'Please enter authentication code.';
           }
         },
       },

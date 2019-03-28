@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import * as clear from 'clear';
 import { textSync } from 'figlet';
 import { files } from './libs/files';
-import { prompter } from './libs/prompter';
+import { github } from './libs/github';
 
 export async function run() {
   clear();
@@ -13,6 +13,10 @@ export async function run() {
     process.exit(1);
   }
 
-  const credentials = await prompter.askGithubCredentials();
-  console.log(credentials);
+  let token = github.getStoredGithubToken();
+  if (!token) {
+    await github.setGithubCredentials();
+    token = await github.registerNewToken();
+  }
+  console.log(token);
 }
