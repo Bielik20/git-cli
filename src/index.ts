@@ -2,8 +2,9 @@ import chalk from 'chalk';
 import * as clear from 'clear';
 import { textSync } from 'figlet';
 import { files } from './libs/files';
+import { prompter } from './libs/prompter';
 
-export function run() {
+export async function run() {
   clear();
   console.log(chalk.yellow(textSync('Git CLI', { horizontalLayout: 'full' })));
 
@@ -11,4 +12,7 @@ export function run() {
     console.log(chalk.red('Already a git repository!'));
     process.exit(1);
   }
+
+  const credentials = await prompter.askGithubCredentials();
+  console.log(credentials);
 }
