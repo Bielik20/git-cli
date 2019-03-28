@@ -23,7 +23,8 @@
   "author": "",
   "scripts": {
     "build": "tsc",
-    "lint": "tslint --project ."
+    "lint": "tslint --project .",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@octokit/rest": "^16.21.0",

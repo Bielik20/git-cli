@@ -61,12 +61,5 @@ typings/
 
 # next.js build output
 .next
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-.idea/**/*
-=======
 .idea
->>>>>>> Stashed changes
-=======
-.idea
->>>>>>> Stashed changes
+dist/
